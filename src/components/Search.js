@@ -1,19 +1,19 @@
 import React from "react";
 
-function Search() {
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log("submitted");
+function Search({ setSearch, search }) {
+
+  function handleSubmit(e){
+    e.preventDefault()
+    setSearch(e.target.search.value)
   }
 
   return (
-    <form className="searchbar" onSubmit={handleSubmit}>
+    <form className="searchbar" onSubmit={handleSubmit} >
       <input
         type="text"
         id="search"
         placeholder="search free stuff"
-        value={""}
-        onChange={(e) => console.log(e.target.value)}
+        onChange={(e) => e.target.value == "" ? setSearch("") : undefined}
       />
       <button type="submit">🔍</button>
     </form>
